@@ -1,0 +1,28 @@
+{
+    "manifest_version": 3,
+    "name": "LinkedIn Scraper Extension",
+    "version": "1.0",
+    "permissions": ["tabs", "activeTab", "storage"],
+    "host_permissions": ["*://*.linkedin.com/*"],
+    "action": {
+      "default_popup": "index.html",
+      "default_icon": "icon_2.png"
+    },
+    "background": {
+      "service_worker": "service.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["*://*.linkedin.com/*"],
+        "js": ["content.js"],
+        "run_at": "document_end"
+      }
+    ],
+    "web_accessible_resources": [
+      {
+        "resources": ["*.png", "*.jpg"],
+        "matches": ["https://*.linkedin.com/*"]
+      }
+    ]
+  }
+  
